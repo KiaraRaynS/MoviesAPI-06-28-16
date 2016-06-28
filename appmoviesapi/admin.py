@@ -1,3 +1,7 @@
 from django.contrib import admin
 
-# Register your models here.
+from appmoviesapi.models import Rater, Movie, MovieRating
+
+admin.site.register(Rater)
+admin.site.register(Movie)
+admin.site.register(MovieRating)
