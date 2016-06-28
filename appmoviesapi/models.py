@@ -37,5 +37,5 @@ class Movie(models.Model):
 class MovieRating(models.Model):
     rater = models.ForeignKey(Rater)
     movie = models.ForeignKey(Movie)
-    ratings = models.IntegerField()
+    rating = models.IntegerField()
     timestamp = models.IntegerField()
