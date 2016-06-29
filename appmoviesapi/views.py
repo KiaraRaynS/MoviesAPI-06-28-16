@@ -1,11 +1,14 @@
-from appmoviesapi.serializers import RaterSerializer, MovieSerializer
-from django.views.generic import View
+from django.views.generic import TemplateView
+from appmoviesapi.serializers import RaterSerializer, MovieSerializer, MovieRatingSerializer
 from appmoviesapi.models import Rater, Movie, MovieRating
 from rest_framework import generics
-import json
 
 
-# Raters Views
+class IndexView(TemplateView):
+    template_name = 'indexview.html'
+
+
+# Raters Classes
 
 
 class RatersListAPIView(generics.ListCreateAPIView):
@@ -13,19 +16,39 @@ class RatersListAPIView(generics.ListCreateAPIView):
     serializer_class = RaterSerializer
 
 
-class RatersDetailAPIView(generics.RetrieveAPIView):
+class RatersDetailAPIView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Rater.objects.all()
     serializer_class = RaterSerializer
 
 
-class MoviesListAPIView(generics.ListCreateAPIView):
+# Movies Classes
+
+class MoviesListAPIView(generics.ListAPIView):
     queryset = Movie.objects.all()
     serializer_class = MovieSerializer
 
 
-class MoviesDetailAPIView(generics.RetrieveAPIView):
+class MoviesDetailAPIView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Movie.objects.all()
     serialzer_class = MovieSerializer
+
+
+class MoviesCreateAPIView(generics.CreateAPIView):
+    queryset = Movie.objects.all()
+    serializer_class = MovieSerializer
+
+
+# Movie Rating Classes
+
+class MovieRatingsListAPIView(generics.ListCreateAPIView):
+    queryset = MovieRating.objects.all()
+    serializer_class = MovieRatingSerializer
+
+
+class MovieRatingsDetailAPIView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = MovieRating.objects.all()
+    serializer_class = MovieRatingSerializer
+
 
 """
 This was practice

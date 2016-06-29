@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h3>Welcome to the MovieRatings API</h3>
+  <p>What would you like to view?</p>
+  <p><a class='btn btn-default' href="{% url 'raterslistapiview' %}">Raters API</a></p>
+  <p><a class='btn btn-default' href="{% url 'movieslistapiview' %}">Movies API</a></p>
+  <p><a class='btn btn-default' href="{% url 'movieratingslistapiview' %}">MovieRatings API</a></p>
+{% endblock %}

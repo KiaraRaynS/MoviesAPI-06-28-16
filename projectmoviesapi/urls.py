@@ -15,13 +15,19 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
+from appmoviesapi.views import IndexView
 from appmoviesapi.views import RatersListAPIView, RatersDetailAPIView
-from appmoviesapi.views import MoviesListAPIView, MoviesDetailAPIView
+from appmoviesapi.views import MoviesListAPIView, MoviesDetailAPIView, MoviesCreateAPIView
+from appmoviesapi.views import MovieRatingsListAPIView, MovieRatingsDetailAPIView
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+    url(r'^$', IndexView.as_view(), name='indexview'),
     url(r'^raters/$', RatersListAPIView.as_view(), name='raterslistapiview'),
     url(r'^raters/(?P<pk>\d+)/$', RatersDetailAPIView.as_view(), name='ratersdetailview'),
-    url(r'^movies/$', MoviesListAPIView.as_view(), name='movielistapiview'),
-    url(r'^movies/(?P<pk>\d+)/$', MoviesDetailAPIView.as_view(), name='moviesdetailapiview')
+    url(r'^movies/$', MoviesListAPIView.as_view(), name='movieslistapiview'),
+    url(r'^movies/(?P<pk>\d+)/$', MoviesDetailAPIView.as_view(), name='moviesdetailapiview'),
+    url(r'^movies/create/$', MoviesCreateAPIView.as_view(), name='moviescreateapiview'),
+    url(r'^movieratings/$', MovieRatingsListAPIView.as_view(), name='movieratingslistapiview'),
+    url(r'^movieratings/(?P<pk>\d+)/$', MovieRatingsDetailAPIView.as_view(), name='movieratingdetailapiview'),
 ]

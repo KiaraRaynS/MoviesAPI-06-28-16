@@ -20,3 +20,10 @@ class MovieSerializer(serializers.ModelSerializer):
                   'horror', 'music', 'mystery', 'romance', 'scifi',
                   'thriller', 'war', 'western'
                   )
+
+
+class MovieRatingSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = MovieRating
+        fields = ('rater', 'movie', 'rating', 'timestamp')
